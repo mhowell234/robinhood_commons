@@ -20,11 +20,11 @@ setup(
     ],
 
     packages=find_packages(),
-    requires=['pyotp', 'requests', 'robinstocks'],
+    requires=['pyotp', 'requests', 'robin_stocks'],
     install_requires=[
           'pyotp',
           'requests',
-          'robinstocks',
+          'robin_stocks',
     ],
     python_requires='>=3.8, <4',
 )
