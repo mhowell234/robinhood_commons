@@ -13,10 +13,10 @@ PATH: str = f'{BASE_PATH}/users.csv'
 class UserDao(Printable):
 
     @staticmethod
-    def get_users() -> List[User]:
+    def get_users(path: str = PATH) -> List[User]:
         users: List[User] = []
         first: bool = True
-        with open(PATH) as csvfile:
+        with open(path) as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
                 if first:

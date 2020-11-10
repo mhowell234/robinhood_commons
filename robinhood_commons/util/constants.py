@@ -1,6 +1,7 @@
 
 MAIN_EMAIL: str = 'mhowell234@gmail.com'
-BASE_PATH: str = '/Users/mhowell234/code/robinhood/'
+BASE_PATH: str = ''
+BASE_PATH3: str = '/Users/mhowell234/code/robinhood/'
 BASE_PATH2: str = '/opt/code/robinhood/'
 LOG_DIR: str = f'{BASE_PATH}output/logs/'
 TMP_DIR = f'{BASE_PATH}tmp/'
