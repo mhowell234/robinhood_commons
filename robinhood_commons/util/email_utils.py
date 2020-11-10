@@ -2,7 +2,7 @@ from typing import List
 
 import yagmail
 
-from util.constants import MAIN_EMAIL
+from robinhood_commons.util.constants import MAIN_EMAIL
 
 
 def send_email(subject: str, contents: str, attachments: List[str], to: str = MAIN_EMAIL) -> None:

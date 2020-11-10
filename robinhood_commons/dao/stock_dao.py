@@ -3,16 +3,16 @@ from typing import List, Optional
 
 from pandas import DataFrame
 
-from entity.earnings import Earnings
-from entity.fundamentals import Fundamentals
-from entity.historicals import Historicals
-from entity.market import Market
-from entity.mover import Mover
-from entity.news import News
-from entity.offer import Offers
-from entity.popularity import Popularity
-from entity.quote import Quote
-from entity.ratings import Ratings
+from robinhood_commons.entity.earnings import Earnings
+from robinhood_commons.entity.fundamentals import Fundamentals
+from robinhood_commons.entity.historicals import Historicals
+from robinhood_commons.entity.market import Market
+from robinhood_commons.entity.mover import Mover
+from robinhood_commons.entity.news import News
+from robinhood_commons.entity.offer import Offers
+from robinhood_commons.entity.popularity import Popularity
+from robinhood_commons.entity.quote import Quote
+from robinhood_commons.entity.ratings import Ratings
 
 
 class StockDao(ABC):

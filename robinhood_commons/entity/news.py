@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Dict, List
 
-from util.date_utils import convert_dates
+from robinhood_commons.util.date_utils import convert_dates
 
 EXAMPLES: List[Dict[str, str]] = [{'api_source': 'cnbc', 'author': '', 'num_clicks': 0,
                                    'preview_image_url': 'https://images.robinhood.com/SFqNLCoF0LN_p9jvvLLKKhBWzSM/aHR0cHM6Ly9pbWFnZXMucm9iaW5ob29kLmNvbS9DaEVMNWZvcXJKaXZxYmhoZ0szS3hpcjJBdWcvYUhSMGNITTZMeTlwYldGblpTNWpibUpqWm0wdVkyOXRMMkZ3YVM5Mk1TOXBiV0ZuWlM4eE1EWTFOelEyTWpjdE1UVTVNVGt3T0RVd056QTROWFJ5ZFcxd0xtcHdaejkyUFRFMU9URTVNRGcxTmpF',

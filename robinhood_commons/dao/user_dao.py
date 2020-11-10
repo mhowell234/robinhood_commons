@@ -3,9 +3,9 @@ from typing import Dict, List
 
 import pyotp
 
-from entity.printable import Printable
-from entity.user import User
-from util.constants import BASE_PATH
+from robinhood_commons.entity.printable import Printable
+from robinhood_commons.entity.user import User
+from robinhood_commons.util.constants import BASE_PATH
 
 PATH: str = f'{BASE_PATH}/users.csv'
 
