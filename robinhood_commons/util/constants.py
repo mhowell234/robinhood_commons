@@ -1,7 +1,7 @@
 
 BASE_PATH: str = '/robinhood_data/'
-LOG_DIR: str = f'{BASE_PATH}output/logs/'
-TMP_DIR = f'{BASE_PATH}tmp/'
+LOG_DIR: str = f'output/logs/'
+TMP_DIR = f'tmp/'
 
 STOCKS_FILE_PATH: str = f'{TMP_DIR}stocks.json'
 

@@ -8,7 +8,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='robinhood_commons',
-    version='1.0.14',
+    version='1.0.15',
     description='Robinhood DayTrader Commons',
     url='https://github.com/mhowell234/robinhood_commons',
     author='mhowell234',
