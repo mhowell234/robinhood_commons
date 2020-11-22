@@ -12,7 +12,7 @@ from robinhood_commons.util.constants import USERS_KEY
 class SecretUtils:
 
     @classmethod
-    def get_secret(cls, secret_name: str, client=AwsUtils.get_boto_client()) -> Dict[str, str]:
+    def get_secret(cls, secret_name: str, client=AwsUtils.get_client()) -> Dict[str, str]:
 
         try:
             get_secret_value_response = client.get_secret_value(SecretId=secret_name)
@@ -44,4 +44,4 @@ class SecretUtils:
 
 
 if __name__ == '__main__':
-    print(SecretUtils.get_secret(client=AwsUtils.get_boto_client(), secret_name=USERS_KEY))
+    print(SecretUtils.get_secret(client=AwsUtils.get_client(), secret_name=USERS_KEY))

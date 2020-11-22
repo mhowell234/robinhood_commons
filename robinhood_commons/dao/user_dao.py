@@ -16,7 +16,7 @@ class UserDao(Printable):
 
     @staticmethod
     def get_users() -> List[User]:
-        aws_client = AwsUtils.get_boto_client()
+        aws_client = AwsUtils.get_client()
 
         user_names: List[str] = UserDao.get_usernames(aws_client=aws_client)
 
