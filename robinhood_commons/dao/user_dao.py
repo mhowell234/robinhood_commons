@@ -32,7 +32,7 @@ class UserDao(Printable):
 
     @staticmethod
     def get_usernames(aws_client) -> List[str]:
-        return AwsUtils.get_secret(client=aws_client, secret_name=USERS_KEY)[USERS_KEY].split(DEFAULT_DELIMITER)
+        return SecretUtils.get_secret(client=aws_client, secret_name=USERS_KEY)[USERS_KEY].split(DEFAULT_DELIMITER)
 
     @staticmethod
     def to_user(user_info: Dict[str, Optional[str]]) -> User:
