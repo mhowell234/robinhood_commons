@@ -95,13 +95,3 @@ if __name__ == '__main__':
     print(dao.get_fundamentals(symbol='AMZN'))
     print(dao.stock_prices(symbol='AMZN'))
     print(dao.stock_prices(symbol='AMZN').columns)
-
-
-    # print(dao.latest_price(symbol='AMZN'))
-    # print(dao.get_fundamentals(symbol='AMZN'))
-    # print(dao.get_earnings(symbol='AMZN'))
-    # print(dao.get_news(symbol='AMZN'))
-    # print(dao.get_ratings(symbol='AMZN'))
-    # print(dao.get_quotes(symbol='AMZN'))
-    # print(dao.get_markets())
-    # print(dao.get_offers(symbol='AMZN'))

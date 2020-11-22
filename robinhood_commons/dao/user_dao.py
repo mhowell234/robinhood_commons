@@ -1,11 +1,12 @@
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from robinhood_commons.entity.printable import Printable
 from robinhood_commons.entity.user import User
-from robinhood_commons.util.constants import USERS_KEY
-from robinhood_commons.util.aws_client import AwsClient
+from robinhood_commons.util.constants import DEFAULT_DELIMITER, USERS_KEY
+from robinhood_commons.util.aws_utils import AwsUtils
+from robinhood_commons.util.secret_utils import SecretUtils
 
 
 KEY_MFA_CODE: str = 'mfa_code'
@@ -15,11 +16,11 @@ class UserDao(Printable):
 
     @staticmethod
     def get_users() -> List[User]:
-        secret_client = AwsClient.create_boto_client()
+        aws_client = AwsUtils.create_boto_client()
 
-        user_names: List[str] = UserDao.get_usernames(secret_client=secret_client)
+        user_names: List[str] = UserDao.get_usernames(aws_client=aws_client)
 
-        return [User(**AwsClient.get_secret(client=secret_client, secret_name=user_name)) for user_name in user_names]
+        return [User(**SecretUtils.get_secret(client=aws_client, secret_name=user_name)) for user_name in user_names]
 
     @staticmethod
     def get_users_by_email() -> Dict[str, User]:
@@ -30,11 +31,11 @@ class UserDao(Printable):
         return UserDao.get_users_by_email()[email]
 
     @staticmethod
-    def get_usernames(secret_client) -> List[str]:
-        return AwsClient.get_secret(client=secret_client, secret_name=USERS_KEY)[USERS_KEY].split(':')
+    def get_usernames(aws_client) -> List[str]:
+        return AwsUtils.get_secret(client=aws_client, secret_name=USERS_KEY)[USERS_KEY].split(DEFAULT_DELIMITER)
 
     @staticmethod
-    def to_user(user_info: Dict[str, str]) -> User:
+    def to_user(user_info: Dict[str, Optional[str]]) -> User:
         if KEY_MFA_CODE not in user_info:
             user_info[KEY_MFA_CODE] = None
 

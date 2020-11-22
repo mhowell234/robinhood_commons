@@ -1,55 +1,47 @@
 from __future__ import annotations
 
+import base64
 from typing import Dict
 
-import boto3
-import base64
-from boto3.session import Session
 from botocore.exceptions import ClientError
 
+from util.aws_utils import AwsUtils
 from util.constants import USERS_KEY
 
-REGION_NAME: str = 'us-west-2'
 
-
-class AwsClient:
+class SecretUtils:
 
     @classmethod
-    def _open_boto_session(cls) -> Session:
-        return boto3.session.Session()
-
-    @classmethod
-    def create_boto_client(cls, name: str = 'secretsmanager', region_name: str = REGION_NAME):
-        return AwsClient._open_boto_session().client(service_name=name, region_name=region_name)
-
-    @classmethod
-    def get_secret(cls, client, secret_name: str) -> Dict[str, str]:
+    def get_secret(cls, secret_name: str, client=AwsUtils.create_boto_client()) -> Dict[str, str]:
 
         try:
             get_secret_value_response = client.get_secret_value(SecretId=secret_name)
         except ClientError as e:
-            print(e)
-            if e.response['Error']['Code'] == 'DecryptionFailureException':
+            error_code = e.response['Error']['Code']
+            if error_code == 'DecryptionFailureException':
                 # Secrets Manager can't decrypt the protected secret text using the provided KMS key.
                 raise e
-            elif e.response['Error']['Code'] == 'InternalServiceErrorException':
+            elif error_code == 'InternalServiceErrorException':
                 # An error occurred on the server side.
                 raise e
-            elif e.response['Error']['Code'] == 'InvalidParameterException':
+            elif error_code == 'InvalidParameterException':
                 # You provided an invalid value for a parameter.
                 raise e
-            elif e.response['Error']['Code'] == 'InvalidRequestException':
+            elif error_code == 'InvalidRequestException':
                 # You provided a parameter value that is not valid for the current state of the resource.
                 raise e
-            elif e.response['Error']['Code'] == 'ResourceNotFoundException':
+            elif error_code == 'ResourceNotFoundException':
                 # We can't find the resource that you asked for.
+                raise e
+            else:
+                print(f'UNKNOWN error: {e}')
                 raise e
         else:
             secret = get_secret_value_response['SecretString'] if 'SecretString' in get_secret_value_response else \
                 base64.b64decode(get_secret_value_response['SecretBinary'])
 
-        return eval(secret)
+            return eval(secret)
 
 
 if __name__ == '__main__':
-    print(AwsClient.get_secret(client=AwsClient.create_boto_client(), secret_name=USERS_KEY))
+    print(SecretUtils.get_secret(client=AwsUtils.create_boto_client(), secret_name=USERS_KEY))
