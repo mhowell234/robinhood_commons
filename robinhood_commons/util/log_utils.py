@@ -4,8 +4,8 @@ from logging import Logger
 from logging.handlers import TimedRotatingFileHandler
 
 from log.gzip_rotator import GZipRotator
-from util.constants import LOG_DIR
-from util.io_utils import ensure_exists
+from robinhood_commons.util.constants import LOG_DIR
+from robinhood_commons.util.io_utils import ensure_exists
 
 
 def create_logger(path):

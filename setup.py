@@ -8,7 +8,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='robinhood_commons',
-    version='1.0.20',
+    version='1.0.22',
     description='Robinhood DayTrader Commons',
     url='https://github.com/mhowell234/robinhood_commons',
     author='mhowell234',
@@ -19,7 +19,7 @@ setup(
         'Programming Language :: Python :: 3.8',
     ],
 
-    packages=['robinhood_commons'],
+    packages=find_packages(include=['robinhood_commons', 'robinhood_commons.*']),
 
     requires=['pyotp', 'requests', 'robin_stocks'],
     install_requires=[

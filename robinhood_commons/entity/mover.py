@@ -5,8 +5,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Dict
 
-from util.date_utils import convert_dates
-from util.num_utils import convert_floats
+from robinhood_commons.util.date_utils import convert_dates
+from robinhood_commons.util.num_utils import convert_floats
 
 EXAMPLE: Dict[str, str] = {
     'instrument_url': 'https://api.robinhood.com/instruments/3c582020-d702-4c8a-b69a-4df7c57d0f49/', 'symbol': 'PVH',

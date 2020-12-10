@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from enum import Enum, auto
 
-from entity.printable import Printable
+from robinhood_commons.entity.printable import Printable
 
 
 class Direction(Printable, Enum):

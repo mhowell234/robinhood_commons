@@ -1,7 +1,7 @@
 import pickle
 from typing import Any
 
-from util.aws_utils import AwsUtils
+from robinhood_commons.util.aws_utils import AwsUtils
 
 SERVICE_NAME: str = 's3'
 BUCKET_NAME: str = 'robinhood-day-trader'

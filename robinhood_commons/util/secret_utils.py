@@ -5,8 +5,8 @@ from typing import Dict
 
 from botocore.exceptions import ClientError
 
-from util.aws_utils import AwsUtils
-from util.constants import USERS_KEY
+from robinhood_commons.util.aws_utils import AwsUtils
+from robinhood_commons.util.constants import USERS_KEY
 
 
 class SecretUtils:
