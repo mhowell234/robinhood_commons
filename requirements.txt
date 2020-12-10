@@ -18,5 +18,6 @@ python-dateutil~=2.8.1
 pytz~=2020.4
 requests~=2.25.0
 robin_stocks~=1.5.2
+setuptools~=51.0.0
 tensorflow~=2.4.0rc4
 yagmail~=0.14.245

@@ -1,4 +1,7 @@
+**/*.egg-info*
 **/__pycache__/
-tmp
-output
 .idea
+build
+dist
+output
+tmp
