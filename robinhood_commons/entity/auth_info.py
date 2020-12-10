@@ -8,7 +8,7 @@ EXAMPLE: Dict[str, str] = {'client_id': 'mh112233', 'secret': '234578', 'refresh
 class AuthInfo:
     client_id: str
     secret: str
-    refresh_token: Optional[str]
+    refresh_token: str
 
 
 def main() -> None:
