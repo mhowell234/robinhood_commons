@@ -9,3 +9,7 @@ def send_email(subject: str, contents: str, attachments: List[str], to: str = MA
     yag = yagmail.SMTP()
 
     yag.send(to=to, subject=subject, contents=contents, attachments=attachments)
+
+
+if __name__ == '__main__':
+    send_email(subject='Test Email', contents='Test content', attachments=[])
