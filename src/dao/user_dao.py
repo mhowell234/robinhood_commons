@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional
 
-from robinhood_commons.entity.printable import Printable
-from robinhood_commons.entity.user import User
-from robinhood_commons.util.constants import DEFAULT_DELIMITER, USERS_KEY
-from robinhood_commons.util.aws_utils import AwsUtils
-from robinhood_commons.util.secret_utils import SecretUtils
+from entity.printable import Printable
+from entity.user import User
+from util.constants import DEFAULT_DELIMITER, USERS_KEY
+from util.aws_utils import AwsUtils
+from util.secret_utils import SecretUtils
 
 
 KEY_MFA_CODE: str = 'mfa_code'

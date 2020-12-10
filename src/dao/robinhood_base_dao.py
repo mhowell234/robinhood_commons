@@ -1,9 +1,9 @@
 import pyotp
 import robin_stocks as rh
 
-from robinhood_commons.dao.user_dao import UserDao
-from robinhood_commons.entity.user import User
-from robinhood_commons.util.constants import MAIN_EMAIL, PROFILE_INFO
+from dao.user_dao import UserDao
+from entity.user import User
+from util.constants import MAIN_EMAIL, PROFILE_INFO
 
 
 class RobinhoodBaseDao:

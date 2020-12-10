@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Dict, List, Union
 
-from robinhood_commons.util.date_utils import convert_dates
-from robinhood_commons.util.num_utils import convert_floats
+from util.date_utils import convert_dates
+from util.num_utils import convert_floats
 
 EXAMPLES: List[Dict[str, Union[str, int, bool]]] = [
     {'begins_at': '2020-06-08T13:30:00Z', 'open_price': '8.430000', 'close_price': '8.130000', 'high_price': '8.440000',

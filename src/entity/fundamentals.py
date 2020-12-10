@@ -2,8 +2,8 @@ from copy import deepcopy
 from dataclasses import dataclass
 from typing import Any, Dict, Union
 
-from robinhood_commons.util.date_utils import convert_dates
-from robinhood_commons.util.num_utils import convert_floats
+from util.date_utils import convert_dates
+from util.num_utils import convert_floats
 
 EXAMPLE: Dict[str, Union[str, int]] = dict(open='6.310000', high='6.785000', low='6.192000', volume='42124974.000000',
                                            average_volume_2_weeks='57372131.900000', average_volume='57372131.900000',

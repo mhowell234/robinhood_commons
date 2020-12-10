@@ -5,8 +5,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-from robinhood_commons.util.date_utils import convert_dates
-from robinhood_commons.util.num_utils import convert_floats
+from util.date_utils import convert_dates
+from util.num_utils import convert_floats
 
 EXAMPLE: List[Dict[str, Any]] = [{'symbol': 'MRO',
                                   'instrument': 'https://api.robinhood.com/instruments/ab4f79fc-f84a-4f7b-8132-4f3e5fb38075/',

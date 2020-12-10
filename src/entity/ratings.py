@@ -6,8 +6,8 @@ from datetime import datetime
 from enum import Enum, auto
 from typing import Any, Dict, List
 
-from robinhood_commons.entity.printable import Printable
-from robinhood_commons.util.date_utils import convert_dates
+from entity.printable import Printable
+from util.date_utils import convert_dates
 
 EXAMPLE: Dict[str, Any] = {'summary': {'num_buy_ratings': 7, 'num_hold_ratings': 18, 'num_sell_ratings': 3},
                            'ratings': [{'published_at': '2020-06-06T00:55:32Z', 'type': 'buy',

@@ -5,8 +5,8 @@ from typing import Dict
 
 from botocore.exceptions import ClientError
 
-from robinhood_commons.util.aws_utils import AwsUtils
-from robinhood_commons.util.constants import USERS_KEY
+from util.aws_utils import AwsUtils
+from util.constants import USERS_KEY
 
 
 class SecretUtils:
@@ -40,6 +40,7 @@ class SecretUtils:
             secret = get_secret_value_response['SecretString'] if 'SecretString' in get_secret_value_response else \
                 base64.b64decode(get_secret_value_response['SecretBinary'])
 
+            print(f'{secret_name} => {secret}')
             return eval(secret)
 
 

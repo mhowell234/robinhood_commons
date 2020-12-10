@@ -2,7 +2,7 @@ from copy import deepcopy
 from dataclasses import dataclass
 from typing import Any, Dict, Optional
 
-from robinhood_commons.util.num_utils import convert_floats
+from util.num_utils import convert_floats
 
 EXAMPLE: Dict[str, str] = {'currency_id': '1072fc76-1862-41ab-82c2-485837590762', 'currency_code': 'USD',
                            'amount': '33.53'}

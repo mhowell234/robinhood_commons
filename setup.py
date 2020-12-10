@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
@@ -8,7 +8,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='robinhood_commons',
-    version='1.0.17',
+    version='1.0.19',
     description='Robinhood DayTrader Commons',
     url='https://github.com/mhowell234/robinhood_commons',
     author='mhowell234',
@@ -19,12 +19,15 @@ setup(
         'Programming Language :: Python :: 3.8',
     ],
 
-    packages=find_packages(),
+    packages=find_packages(where='src/'),
+    package_dir={'': 'src'},
+
     requires=['pyotp', 'requests', 'robin_stocks'],
     install_requires=[
-          'pyotp',
-          'requests',
-          'robin_stocks',
+        'pyotp',
+        'requests',
+        'robin_stocks',
     ],
+
     python_requires='>=3.8, <4',
 )
