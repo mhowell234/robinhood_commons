@@ -2,7 +2,7 @@ import logging
 from logging import Logger
 from logging.handlers import TimedRotatingFileHandler
 
-from log.gzip_rotator import GZipRotator
+from robinhood_commons.log.gzip_rotator import GZipRotator
 from robinhood_commons.util.io_utils import ensure_exists
 
 
