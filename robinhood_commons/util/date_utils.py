@@ -9,6 +9,7 @@ from holidays.countries.united_states import US as US_holidays
 BASE_TZ = pytz.timezone(zone='US/Eastern')
 UPDATED_AT: str = 'updated_at'
 CREATED_AT: str = 'created_at'
+GRAINS: List[str] = ['days', 'hours', 'minutes', 'seconds']
 
 
 def to_est() -> datetime:
@@ -126,6 +127,44 @@ def is_holiday(a_time: datetime = to_est()) -> bool:
 
 def is_weekend(a_time: datetime = to_est()) -> bool:
     return True if a_time.date().weekday() > 4 else False
+
+
+def _maybe_singleize(plural_grain: str, value: int) -> str:
+    """If the value is 1, then toss the plural s at the end of the granularity.
+
+    Args:
+        plural_grain: grain name
+        value: value
+
+    Returns: either the initial grain name, or a singular version
+    """
+    if value == 1:
+        return plural_grain[:-1]
+
+    return plural_grain
+
+
+def to_readable_duration(delta: timedelta) -> str:
+    """Converts a timedelta to a readable duration string, e.g. "X days, Y hours, Z minutes, A seconds"
+
+    Args:
+        delta: time delta (timeA - timeB)
+
+    Returns: readable string based on the duration
+    """
+    days: int = delta.days
+    seconds: int = delta.seconds
+
+    hours: int = seconds // 3600
+
+    remaining: int = seconds - hours * 3600
+    mins: int = remaining // 60
+    secs: int = remaining - mins * 60
+
+    combined = [f'{data[1]} {_maybe_singleize(data[0], data[1])}' for data in zip(GRAINS, [days, hours, mins, secs]) if
+                data[1] > 0]
+
+    return ', '.join(combined)
 
 
 if __name__ == '__main__':
