@@ -78,12 +78,13 @@ def time_next_open(a_time: datetime = to_est()) -> datetime:
 
     # Calculate days to skip for holidays and weekends based on that start of that day
     n = a_time.replace(hour=0, minute=0, second=0, microsecond=0)
-    while is_weekend(n) or is_holiday(n):
-        n += timedelta(days=1)
-
-    # If after market close, add a day
-    if in_post_market_time_window(a_time):
-        n += timedelta(days=1)
+    if is_weekend(n) or is_holiday(n):
+        while is_weekend(n) or is_holiday(n):
+            n += timedelta(days=1)
+    else:
+        # If after market close, add a day
+        if in_post_market_time_window(a_time):
+            n += timedelta(days=1)
 
     # Add the opening time
     return BASE_TZ.localize(datetime.combine(n.date(), OPEN_TIME))
