@@ -6,9 +6,9 @@ from robinhood_commons.util.date_utils import convert_dates
 from robinhood_commons.util.num_utils import convert_floats
 
 EXAMPLE: Dict[str, Union[str, int]] = dict(open='6.310000', high='6.785000', low='6.192000', volume='42124974.000000',
-                                           average_volume_2_weeks='57372131.900000', average_volume='57372131.900000',
-                                           high_52_weeks='14.700000', dividend_yield='2.610970',
-                                           float='787326991.576000', low_52_weeks='3.020000',
+                                           market_date='2020-12-14', average_volume_2_weeks='57372131.900000',
+                                           average_volume='57372131.900000', high_52_weeks='14.700000',
+                                           dividend_yield='2.610970', float='787326991.576000', low_52_weeks='3.020000',
                                            market_cap='4947353120.000000', pb_ratio='0.501716', pe_ratio='23.915100',
                                            shares_outstanding='790312000.000000',
                                            description='Marathon Oil Corp. engages in the exploration, production, and marketing of liquid hydrocarbons and natural gas. It operates through the following two segments: United States (U. S.) and International. The U. S. segment engages in oil and gas exploration, development and production activities in the U.S. The International segment engages in oil and gas development and production across international locations primarily in Equatorial Guinea and the United Kingdom. The company was founded in 1887 and is headquartered in Houston, TX.',
@@ -25,6 +25,7 @@ class Fundamentals:
     high: float
     low: float
     volume: float
+    market_date: str
     average_volume_2_weeks: float
     average_volume: float
     high_52_weeks: float

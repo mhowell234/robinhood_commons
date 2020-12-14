@@ -1,6 +1,6 @@
 from copy import deepcopy
 from datetime import datetime, timedelta
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 import pytz
 from dateutil import parser
@@ -144,7 +144,7 @@ def _maybe_singleize(plural_grain: str, value: int) -> str:
     return plural_grain
 
 
-def to_readable_duration(delta: timedelta) -> str:
+def to_readable_duration(delta: timedelta) -> Optional[str]:
     """Converts a timedelta to a readable duration string, e.g. "X days, Y hours, Z minutes, A seconds"
 
     Args:
@@ -163,6 +163,9 @@ def to_readable_duration(delta: timedelta) -> str:
 
     combined = [f'{data[1]} {_maybe_singleize(data[0], data[1])}' for data in zip(GRAINS, [days, hours, mins, secs]) if
                 data[1] > 0]
+
+    if len(combined) <= 0:
+        return None
 
     return ', '.join(combined)
 
