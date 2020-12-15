@@ -12,6 +12,10 @@ CREATED_AT: str = 'created_at'
 GRAINS: List[str] = ['days', 'hours', 'minutes', 'seconds']
 
 
+def date_time_format() -> str:
+    return '%Y%m%d%H%M'
+
+
 def to_est() -> datetime:
     return datetime.now(tz=BASE_TZ)
 
@@ -20,72 +24,72 @@ def date_parse(date_str: str) -> datetime:
     return parser.isoparse(date_str) if date_str is not None else None
 
 
-def to_date(date_str: str) -> datetime:
-    return datetime.strptime(date_string=date_str, format='%Y%m%d')
+def to_date(date_str: str, format_str: str = '%Y%m%d') -> datetime:
+    return datetime.strptime(date_string=date_str, format=format_str)
 
 
-def date_to_str(a_date: datetime = to_est()) -> str:
+def date_to_str(a_date: datetime = to_est(), format_str: str = '%Y%m%d') -> str:
     """ Provides a day representation.
 
     Returns:
         A year, month, and day string
     """
-    return a_date.strftime('%Y%m%d')
+    return a_date.strftime(format_str)
 
 
-def str_to_iso_8601(a_str: str) -> datetime:
-    return datetime.strptime(a_str, '%Y-%m-%d %H:%M:%S.%f')
+def str_to_iso_8601(a_str: str, format_str: str = '%Y-%m-%d %H:%M:%S.%f') -> datetime:
+    return datetime.strptime(a_str, format_str)
 
 
-def str_to_datetime(a_str: str = to_est()) -> datetime:
-    return datetime.strptime(a_str, date_time_format())
-    # return datetime.strptime(date_string=a_str, format=date_time_format())
+def str_to_datetime(a_str: str = to_est(), format_str: str = date_time_format()) -> datetime:
+    return datetime.strptime(a_str, format_str)
 
 
-def datetime_to_str(a_date: datetime = to_est()) -> str:
+def datetime_to_str(a_date: datetime = to_est(), format_str: str = date_time_format()) -> str:
     """ Provides a minute representation.
 
     Returns:
         A year, month, day, hour, minute string
     """
-    return a_date.strftime(date_time_format())
+    return a_date.strftime(format_str)
 
 
-def second_to_str(a_date: datetime = to_est()) -> str:
+def second_to_str(a_date: datetime = to_est(), format_str: str = '%Y%m%d%H%M%S') -> str:
     """ Provides a second representation.
 
     Returns:
         A year, month, day, hour, minute, second string
     """
-    return a_date.strftime('%Y%m%d%H%M%S')
+    return a_date.strftime(format_str)
 
 
-def time_to_str(a_date: datetime = to_est()) -> str:
+def time_to_str(a_date: datetime = to_est(), format_str: str = '%H%M') -> str:
     """Provides a time string based representation.
 
     Args:
         a_date: a date
+        format_str: time format string
 
     Returns:
         A hour, minute string
     """
-    return a_date.strftime('%H%M')
+    return a_date.strftime(format_str)
 
 
-def readable_datetime_to_str(a_date: datetime = to_est()) -> str:
+def readable_datetime_to_str(a_date: datetime = to_est(), format_str: str = '%Y-%m-%d %H:%M:00') -> str:
     """ Provides a minute representation.
 
-    Returns: a year, month, day, hour, minute string
+    Returns: a formatted string, defaults to year, month, day, hour, minute string
     """
-    return a_date.strftime('%Y-%m-%d %H:%M:00')
+    return a_date.strftime(format_str)
 
 
-def readable_date_to_str(a_date: datetime = to_est()) -> str:
+def readable_date_to_str(a_date: datetime = to_est(), format_str: str = '%Y-%m-%d') -> str:
     """ Provides a minute representation.
 
     Returns: a year, month, day
     """
-    return a_date.strftime('%Y-%m-%d')
+    return a_date.strftime(format_str)
 
 
 def timeoffset_as_str(seconds: int, a_datetime=to_est()) -> str:
@@ -94,10 +98,6 @@ def timeoffset_as_str(seconds: int, a_datetime=to_est()) -> str:
     Returns: a year, month, day, hour, minute string
     """
     return time_to_str(a_datetime - timedelta(seconds=seconds))
-
-
-def date_time_format() -> str:
-    return '%Y%m%d%H%M'
 
 
 def time_floor(a_date: datetime = to_est(), window: int = 10) -> datetime:
@@ -121,8 +121,8 @@ def convert_dates(input_data: Dict[str, Any], keys: List[str] = []) -> Dict[str,
     return input_data
 
 
-def is_holiday(a_time: datetime = to_est()) -> bool:
-    return True if a_time.strftime('%Y-%m-%d') in US_holidays() else False
+def is_holiday(a_time: datetime = to_est(), format_str: str = '%Y-%m-%d') -> bool:
+    return True if a_time.strftime(format_str) in US_holidays() else False
 
 
 def is_weekend(a_time: datetime = to_est()) -> bool:
