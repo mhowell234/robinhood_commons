@@ -2,7 +2,7 @@ import os
 
 from robinhood_commons.util.io_utils import ensure_exists
 
-MAIN_EMAIL: str = 'mhowell234.daytrader@gmail.com'
+MAIN_EMAIL: str = 'mhowell234@gmail.com'
 USERS_KEY: str = 'users'
 DEFAULT_DELIMITER: str = ':'
 
