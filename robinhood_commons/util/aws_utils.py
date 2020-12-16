@@ -18,7 +18,6 @@ class AwsUtils:
     def get_client(cls, name: str = KEY_KEY_MGNR, region_name: str = REGION_NAME):
         return AwsUtils.__open_boto_session__().client(service_name=name, region_name=region_name)
 
-
     @classmethod
     def __open_boto_session__(cls) -> Session:
         return boto3.session.Session()

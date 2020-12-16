@@ -1,5 +1,5 @@
-from json import JSONDecoder, JSONEncoder
 from datetime import datetime
+from json import JSONDecoder, JSONEncoder
 
 
 class DateTimeEncoderDecoder(JSONDecoder, JSONEncoder):

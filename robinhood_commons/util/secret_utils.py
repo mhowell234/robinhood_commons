@@ -9,7 +9,7 @@ from robinhood_commons.util.aws_utils import AwsUtils
 from robinhood_commons.util.constants import USERS_KEY
 
 
-#TODO: to dao object....
+# TODO: to dao object....
 class SecretUtils:
 
     def __init__(self, aws_client=AwsUtils.get_client()) -> None:

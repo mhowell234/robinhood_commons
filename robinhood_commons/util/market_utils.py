@@ -2,7 +2,6 @@ from datetime import datetime, time, timedelta
 
 from robinhood_commons.util.date_utils import BASE_TZ, is_holiday, is_weekend, to_est
 
-
 PRE_MARKET_OPEN_TIME: time = time(hour=8, minute=30, second=0, microsecond=0)
 OPEN_TIME: time = time(hour=9, minute=30, second=0, microsecond=0)
 CLOSE_TIME: time = time(hour=16, minute=0, second=0, microsecond=0)
@@ -38,8 +37,8 @@ def is_extended_hours_market_open(a_time: datetime = to_est()) -> bool:
 def in_extended_hours_market_time_window(a_time: datetime = to_est()) -> bool:
     # If in the 0830-1800 range
     return True if (
-                not in_pre_extended_hours_market_time_window(a_time) and not in_post_extended_hours_market_time_window(
-            a_time)) else False
+            not in_pre_extended_hours_market_time_window(a_time) and not in_post_extended_hours_market_time_window(
+        a_time)) else False
 
 
 def in_pre_extended_hours_market_time_window(a_time: datetime = to_est()) -> bool:

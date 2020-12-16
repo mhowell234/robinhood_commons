@@ -43,4 +43,5 @@ if __name__ == '__main__':
     the_logger.info('help!')
 
     import os
+
     os.remove(path=path)

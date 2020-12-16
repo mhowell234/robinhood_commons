@@ -15,4 +15,3 @@ def get_tmp_dir(base_path: str = BASE_PATH) -> str:
 
 def stocks_file_path(base_path: str = BASE_PATH) -> str:
     return f'{get_tmp_dir(base_path=base_path)}/stocks.json'
-
