@@ -17,13 +17,11 @@ ERROR_SLEEP_TIME: int = 30  # in seconds
 
 
 def get_base_dir(name: str = 'daytrader', base_dir: str = '/code/robinhood', append_user_base: bool = True) -> str:
-    if append_user_base:
-        base: str = os.path.expanduser(f'~{base_dir}')
-    else:
-        base: str = base_dir
+    base: str = os.path.expanduser(f'~{base_dir}') if append_user_base else base_dir
+    base_dir: str = f'{base}-{name}'
 
-    ensure_exists(file_path=f'{base}-{name}')
-    return base
+    ensure_exists(file_path=base_dir)
+    return base_dir
 
 
 OUTPUT_DIR: str = f'{get_base_dir()}/output'
