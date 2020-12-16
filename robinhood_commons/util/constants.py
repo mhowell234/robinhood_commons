@@ -2,7 +2,7 @@ import os
 
 from robinhood_commons.util.io_utils import ensure_exists
 
-MAIN_EMAIL: str = 'mhowell234@gmail.com'
+MAIN_EMAIL: str = 'mhowell234.daytrader@gmail.com'
 USERS_KEY: str = 'users'
 DEFAULT_DELIMITER: str = ':'
 
@@ -35,5 +35,4 @@ STOCKS_FILE_PATH: str = f'{TMP_DIR}/stocks.json'
 if __name__ == '__main__':
     print(get_base_dir())
     print(get_base_dir(base_dir='/Documents'))
-    # print(get_base_dir(append_user_base=False))
     print(STOCKS_FILE_PATH)
