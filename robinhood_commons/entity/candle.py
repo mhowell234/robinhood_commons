@@ -9,14 +9,14 @@ from typing import Dict, List, Union
 
 @dataclass
 class Candle:
-    cu: float = 0.0
-    o: float = 0.0
-    c: float = 0.0
-    h: float = 0.0
-    l: float = 0.0
-    dh: float = 0.0
-    dl: float = 0.0
-    do: float = 0.0
+    current: float = 0.0
+    open: float = 0.0
+    close: float = 0.0
+    high: float = 0.0
+    low: float = 0.0
+    day_high: float = 0.0
+    day_low: float = 0.0
+    day_open: float = 0.0
 
 
 def to_picklable(candles: Dict[str, Dict[str, Candle]]) -> List[Dict[str, Union[str, Candle]]]:
@@ -24,7 +24,7 @@ def to_picklable(candles: Dict[str, Dict[str, Candle]]) -> List[Dict[str, Union[
 
     for symbol, candle_data in candles.items():
         cdata = deepcopy(candle_data)
-        cdata['s'] = symbol
+        cdata['symbol'] = symbol
         data.append(cdata)
     return data
 
@@ -33,20 +33,20 @@ def from_picklable(candles: List[Dict[str, Union[str, Candle]]]) -> Dict[str, Di
     data = defaultdict(lambda: defaultdict(Candle))
 
     for candle_data in candles:
-        symbol = candle_data['s']
-        del candle_data['s']
+        symbol = candle_data['symbol']
+        del candle_data['symbol']
 
         data[symbol] = candle_data
     return data
 
 
 class CandleEncoder(JSONEncoder):
-    def default(self, o):
-        return o.__dict__
+    def default(self, other):
+        return other.__dict__
 
 
 def main() -> None:
-    candle = Candle(cu=1.0, o=1.0, c=2.0, h=4.0, l=0.5, dh=1.0, dl=0.5, do=0.0)
+    candle = Candle(current=1.0, open=1.0, close=2.0, high=4.0, low=0.5, day_high=1.0, day_low=0.5, day_open=0.0)
     print(candle)
 
 

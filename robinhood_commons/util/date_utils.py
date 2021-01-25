@@ -13,7 +13,7 @@ GRAINS: List[str] = ['days', 'hours', 'minutes', 'seconds']
 
 
 def date_time_format() -> str:
-    return '%Y%m%d%H%M'
+    return '%Y%m%dT%H%M'
 
 
 def to_est() -> datetime:

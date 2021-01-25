@@ -8,3 +8,7 @@ EMAIL_NOTIFIER_KEY: str = 'email-notifier'
 def get_auth_info(auth_key: str = EMAIL_NOTIFIER_KEY) -> AuthInfo:
     return AuthInfo(**SecretUtils.get_secret(client=AwsUtils.get_client(),
                                              secret_name=auth_key))
+
+
+if __name__ == '__main__':
+    print(get_auth_info())

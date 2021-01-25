@@ -6,18 +6,18 @@ from robinhood_commons.log.gzip_rotator import GZipRotator
 from robinhood_commons.util.io_utils import ensure_exists
 
 
-def create_logger(path: str) -> Logger:
+def create_logger(a_path: str) -> Logger:
     """
     Creates a rotating log
     """
 
-    ensure_exists(path)
+    ensure_exists(a_path)
 
-    log_name: str = path.split('/')[-1]
+    log_name: str = a_path.split('/')[-1]
     logger = logging.getLogger(log_name.split('.')[0])
     logger.setLevel(logging.INFO)
 
-    log_handler = TimedRotatingFileHandler(filename=path, when='h')
+    log_handler = TimedRotatingFileHandler(filename=a_path, when='h')
 
     log_formatter = logging.Formatter('%(asctime)s [%(levelname)s] [%(name)s] %(message)s')
     log_handler.setFormatter(log_formatter)
@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
     path: str = f'/tmp/output/log_utils.{random_float(0, 100)}.log'
 
-    the_logger: Logger = create_logger(name=path)
+    the_logger: Logger = create_logger(a_path=path)
     the_logger.info('help!')
 
     import os
