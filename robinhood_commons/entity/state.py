@@ -11,6 +11,7 @@ class State(Enum):
     CONFIRMED = auto()
     FAILED = auto()
     FILLED = auto()
+    MISSING = auto()
     PARTIALLY_FILLED = auto()
     PENDING = auto()
     QUEUED = auto()

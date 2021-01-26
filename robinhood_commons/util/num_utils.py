@@ -1,3 +1,4 @@
+import math
 from copy import deepcopy
 from typing import Any, Dict, List
 
@@ -21,3 +22,7 @@ def convert_floats(input_data: Dict[str, Any], keys: List[str], default_value=No
         return data
 
     return input_data
+
+
+def is_zero(input: float) -> bool:
+    return math.isclose(input, 0.0)

@@ -1,10 +1,7 @@
 from __future__ import annotations
 
-from collections import defaultdict
-from copy import deepcopy
 from dataclasses import dataclass
 from json import JSONEncoder
-from typing import Dict, List, Union
 
 
 @dataclass
@@ -17,27 +14,6 @@ class Candle:
     day_high: float = 0.0
     day_low: float = 0.0
     day_open: float = 0.0
-
-
-def to_picklable(candles: Dict[str, Dict[str, Candle]]) -> List[Dict[str, Union[str, Candle]]]:
-    data = []
-
-    for symbol, candle_data in candles.items():
-        cdata = deepcopy(candle_data)
-        cdata['symbol'] = symbol
-        data.append(cdata)
-    return data
-
-
-def from_picklable(candles: List[Dict[str, Union[str, Candle]]]) -> Dict[str, Dict[str, Candle]]:
-    data = defaultdict(lambda: defaultdict(Candle))
-
-    for candle_data in candles:
-        symbol = candle_data['symbol']
-        del candle_data['symbol']
-
-        data[symbol] = candle_data
-    return data
 
 
 class CandleEncoder(JSONEncoder):

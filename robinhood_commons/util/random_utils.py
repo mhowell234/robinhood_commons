@@ -1,4 +1,6 @@
 import random
+import uuid
+from uuid import UUID
 from typing import Sequence, Set
 
 
@@ -23,3 +25,7 @@ def get_unique_randoms(iterable: Sequence, count: int) -> Set[str]:
         indices.add(random.choice(iterable).symbol)
 
     return indices
+
+
+def get_uuid() -> UUID:
+    return uuid.uuid4()
