@@ -1,4 +1,10 @@
-boto3==1.16.59
+boto3==1.16.62
+convertdate==2.3.0
 holidays==0.10.4
+korean-lunar-calendar==0.2.1
+lunarcalendar==0.0.9
+pytest==6.2.2
+pytest-cov==2.11.1
+pytest-html==3.1.1
 pytz==2020.5
 yagmail==0.14.245

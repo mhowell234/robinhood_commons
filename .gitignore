@@ -1,8 +1,12 @@
 **/*.egg-info*
 **/__pycache__/
+.coverage
+.eggs
 .idea
+assets
 build
 dist
 output
+report.html
 tmp
 venv

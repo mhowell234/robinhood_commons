@@ -20,12 +20,16 @@ def to_est() -> datetime:
     return datetime.now(tz=BASE_TZ)
 
 
+def tz_localize(a_date: datetime) -> datetime:
+    return BASE_TZ.localize(a_date)
+
+
 def date_parse(date_str: str) -> datetime:
     return parser.isoparse(date_str) if date_str is not None else None
 
 
 def to_date(date_str: str, format_str: str = '%Y%m%d') -> datetime:
-    return datetime.strptime(date_string=date_str, format=format_str)
+    return datetime.strptime(date_str, format_str)
 
 
 def date_to_str(a_date: datetime = to_est(), format_str: str = '%Y%m%d') -> str:
