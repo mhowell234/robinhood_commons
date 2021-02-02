@@ -55,8 +55,9 @@ def time_til_close(a_date: datetime = to_est(), extended_hours: bool = False) ->
     return time_til_extended_close(a_date=a_date) if extended_hours else time_til_regular_close(a_date=a_date)
 
 
-def within_close_threshold(a_date: datetime = to_est(), extended_hours: bool = False,
-                           closing_window_mins: int = MARKET_CLOSING_WINDOW) -> bool:
+def within_close_threshold(
+    a_date: datetime = to_est(), extended_hours: bool = False, closing_window_mins: int = MARKET_CLOSING_WINDOW
+) -> bool:
     """Within the closing threshold of the market for the given day.
 
     Args:
@@ -71,6 +72,7 @@ def within_close_threshold(a_date: datetime = to_est(), extended_hours: bool = F
 
 
 # Aux methods that only care about time windows regardless of date context
+
 
 def in_market_time_window(a_time: datetime = to_est()) -> bool:
     """Is the market open?
@@ -121,8 +123,13 @@ def in_extended_hours_market_time_window(a_time: datetime = to_est()) -> bool:
 
     Returns: if extended and regular hours are open
     """
-    return any([in_pre_extended_hours_market_time_window(a_time), in_post_extended_hours_market_time_window(
-        a_time), in_market_time_window(a_time)])
+    return any(
+        [
+            in_pre_extended_hours_market_time_window(a_time),
+            in_post_extended_hours_market_time_window(a_time),
+            in_market_time_window(a_time),
+        ]
+    )
 
 
 def in_pre_extended_hours_market_time_window(a_time: datetime = to_est()) -> bool:
@@ -227,6 +234,7 @@ def time_til_extended_open(a_date: datetime = to_est()) -> timedelta:
 
     open_time = tz_localize(datetime.combine(base_date.date(), PRE_MARKET_OPEN_TIME))
     return open_time - a_date
+
 
 #
 # ONE_MINUTE: timedelta = timedelta(minutes=1)

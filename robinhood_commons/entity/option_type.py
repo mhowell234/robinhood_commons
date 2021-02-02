@@ -9,7 +9,7 @@ class OptionType(Enum):
 
     @staticmethod
     def to_enum(value: str) -> OptionType:
-        v: str = value.upper().replace(' ', '-').replace('-', '_')
+        v: str = value.upper().replace(" ", "-").replace("-", "_")
         return OptionType[v]
 
     def value(self) -> str:

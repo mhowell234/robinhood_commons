@@ -12,7 +12,7 @@ class StatType(Enum):
 
     @staticmethod
     def to_enum(value: str) -> StatType:
-        v: str = value.upper().replace(' ', '-').replace('-', '_')
+        v: str = value.upper().replace(" ", "-").replace("-", "_")
         return StatType[v]
 
     def value(self) -> str:

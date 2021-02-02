@@ -21,24 +21,24 @@ def send_email(smtp_client: SMTP, subject: str, contents: str, attachments: List
     smtp_client.send(to=to, subject=subject, contents=contents, attachments=attachments)
 
 
-if __name__ == '__main__':
-    sender_email: str = 'test_email@gmail.com'
+if __name__ == "__main__":
+    sender_email: str = "test_email@gmail.com"
 
     # Determine where to write auth data
     from robinhood_commons.util.random_utils import random_float
 
-    auth_file_path: str = f'/tmp/data.{random_float(0, 100)}'
+    auth_file_path: str = f"/tmp/data.{random_float(0, 100)}"
 
     # Write auth data
     import json
     from robinhood_commons.util.auth_utils import auth_dict
 
-    with open(auth_file_path, 'w') as auth_file:
+    with open(auth_file_path, "w") as auth_file:
         auth_file.write(json.dumps(auth_dict(sender=sender_email)))
 
     # Init client and send email
     email_client = get_smtp_client(sender=sender_email, oauth2_file=auth_file_path)
-    send_email(smtp_client=email_client, subject='Test Email', contents='Test content', attachments=[])
+    send_email(smtp_client=email_client, subject="Test Email", contents="Test content", attachments=[])
 
     # Remove auth data info
     import os

@@ -3,15 +3,14 @@ from __future__ import annotations
 import boto3
 from boto3.session import Session
 
-REGION_NAME: str = 'us-west-2'
+REGION_NAME: str = "us-west-2"
 
-KEY_KEY_MGNR: str = 'secretsmanager'
+KEY_KEY_MGNR: str = "secretsmanager"
 
 
 class AwsUtils:
-
     @classmethod
-    def get_resource(cls, name: str = 's3'):
+    def get_resource(cls, name: str = "s3"):
         return boto3.resource(name)
 
     @classmethod
@@ -23,5 +22,5 @@ class AwsUtils:
         return boto3.session.Session()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(AwsUtils.get_client())

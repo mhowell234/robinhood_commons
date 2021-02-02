@@ -13,8 +13,13 @@ class StopOrderRequest(OrderRequest):
     #  TODO: should_execute
 
 
-if __name__ == '__main__':
-    order = StopOrderRequest(symbol='AMZN', execution_type=ExecutionType.SELL, stop_price=2000, quantity=1000,
-                             time_in_force=TimeInForce.GOOD_TIL_CANCELLED)
+if __name__ == "__main__":
+    order = StopOrderRequest(
+        symbol="AMZN",
+        execution_type=ExecutionType.SELL,
+        stop_price=2000,
+        quantity=1000,
+        time_in_force=TimeInForce.GOOD_TIL_CANCELLED,
+    )
 
     print(order)

@@ -19,17 +19,17 @@ def file_exists(path: str) -> bool:
     return os.path.exists(path)
 
 
-def write_csv_data(path: str, header: List[str], data: List[Any], update_type: str = 'w', as_bz2: bool = False) -> None:
+def write_csv_data(path: str, header: List[str], data: List[Any], update_type: str = "w", as_bz2: bool = False) -> None:
     if as_bz2:
-        with bz2.open(filename=path, mode='wt') as f:
+        with bz2.open(filename=path, mode="wt") as f:
             write(obj=f, header=header, data=data)
     else:
-        with open(file=path, mode=update_type, newline='\n') as f:
+        with open(file=path, mode=update_type, newline="\n") as f:
             write(obj=f, header=header, data=data)
 
 
 def write(obj: Any, header: List[str], data: List[Any]) -> None:
-    writer = csv.writer(obj, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    writer = csv.writer(obj, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
     if header and len(header) > 0:
         writer.writerow(header)
 

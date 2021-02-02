@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Dict, Optional
 
-EXAMPLE: Dict[str, str] = {'username': 'mh', 'email': 'mh@gmail', 'pwd': 'pwd', 'mfa_code': '123'}
+EXAMPLE: Dict[str, str] = {"username": "mh", "email": "mh@gmail", "pwd": "pwd", "mfa_code": "123"}
 
 
 @dataclass(frozen=True)
@@ -17,5 +17,5 @@ def main() -> None:
     print(user)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

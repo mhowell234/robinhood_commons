@@ -11,7 +11,6 @@ from robinhood_commons.util.constants import USERS_KEY
 
 # TODO: to dao object....
 class SecretUtils:
-
     def __init__(self, aws_client=AwsUtils.get_client()) -> None:
         self.aws_client = aws_client
 
@@ -21,32 +20,35 @@ class SecretUtils:
         try:
             get_secret_value_response = client.get_secret_value(SecretId=secret_name)
         except ClientError as e:
-            error_code = e.response['Error']['Code']
-            if error_code == 'DecryptionFailureException':
+            error_code = e.response["Error"]["Code"]
+            if error_code == "DecryptionFailureException":
                 # Secrets Manager can't decrypt the protected secret text using the provided KMS key.
                 raise e
-            elif error_code == 'InternalServiceErrorException':
+            elif error_code == "InternalServiceErrorException":
                 # An error occurred on the server side.
                 raise e
-            elif error_code == 'InvalidParameterException':
+            elif error_code == "InvalidParameterException":
                 # You provided an invalid value for a parameter.
                 raise e
-            elif error_code == 'InvalidRequestException':
+            elif error_code == "InvalidRequestException":
                 # You provided a parameter value that is not valid for the current state of the resource.
                 raise e
-            elif error_code == 'ResourceNotFoundException':
+            elif error_code == "ResourceNotFoundException":
                 # We can't find the resource that you asked for.
                 raise e
             else:
-                print(f'UNKNOWN error: {e}')
+                print(f"UNKNOWN error: {e}")
                 raise e
         else:
-            secret = get_secret_value_response['SecretString'] if 'SecretString' in get_secret_value_response else \
-                base64.b64decode(get_secret_value_response['SecretBinary'])
+            secret = (
+                get_secret_value_response["SecretString"]
+                if "SecretString" in get_secret_value_response
+                else base64.b64decode(get_secret_value_response["SecretBinary"])
+            )
 
-            print(f'{secret_name} => {secret}')
+            print(f"{secret_name} => {secret}")
             return eval(secret)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(SecretUtils.get_secret(client=AwsUtils.get_client(), secret_name=USERS_KEY))

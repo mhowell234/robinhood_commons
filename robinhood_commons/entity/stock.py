@@ -8,8 +8,12 @@ class Stock:
 
 
 def main() -> None:
-    print([Stock(**{'symbol': 'AAPL', 'company_name': 'Apple Inc.'}),
-           Stock(**{'symbol': 'WMS', 'company_name': 'Advanced Drainage Systems Inc.'})])
+    print(
+        [
+            Stock(**{"symbol": "AAPL", "company_name": "Apple Inc."}),
+            Stock(**{"symbol": "WMS", "company_name": "Advanced Drainage Systems Inc."}),
+        ]
+    )
 
 
 if __name__ == "__main__":

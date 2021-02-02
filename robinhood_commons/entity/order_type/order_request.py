@@ -19,10 +19,16 @@ class OrderRequest:
         return True
 
 
-if __name__ == '__main__':
-    order_request = OrderRequest(symbol='AMZN', execution_type=ExecutionType.SELL, order_type=OrderType.MARKET,
-                                 quantity=100, price=-2, notes='Because',
-                                 time_in_force=TimeInForce.IMMEDIATE_OR_CANCEL)
+if __name__ == "__main__":
+    order_request = OrderRequest(
+        symbol="AMZN",
+        execution_type=ExecutionType.SELL,
+        order_type=OrderType.MARKET,
+        quantity=100,
+        price=-2,
+        notes="Because",
+        time_in_force=TimeInForce.IMMEDIATE_OR_CANCEL,
+    )
 
     print(order_request)
     print(order_request.should_execute())

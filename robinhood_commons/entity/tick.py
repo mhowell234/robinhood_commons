@@ -15,15 +15,15 @@ class Tick:
 def clean_tick(input_data: Dict[str, Any]) -> Dict[str, Any]:
     data = deepcopy(input_data)
 
-    data = convert_floats(data, ['above_tick', 'below_tick', 'cutoff_price'])
+    data = convert_floats(data, ["above_tick", "below_tick", "cutoff_price"])
 
     return data
 
 
 def main() -> None:
-    tick = Tick(**clean_tick({'above_tick': '1.0', 'below_tick': '0.5', 'cutoff_price': '44.5'}))
+    tick = Tick(**clean_tick({"above_tick": "1.0", "below_tick": "0.5", "cutoff_price": "44.5"}))
     print(tick)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -24,7 +24,7 @@ class State(Enum):
     def to_enum(value: str) -> Optional[State]:
         if value is None:
             return State.UNKNOWN
-        v: str = value.upper().replace(' ', '-').replace('-', '_')
+        v: str = value.upper().replace(" ", "-").replace("-", "_")
         return State[v]
 
     def value(self) -> str:

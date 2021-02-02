@@ -11,7 +11,7 @@ class ExecutionType(Enum):
 
     @staticmethod
     def to_enum(value: str) -> Optional[ExecutionType]:
-        v: str = value.upper().replace(' ', '-').replace('-', '_')
+        v: str = value.upper().replace(" ", "-").replace("-", "_")
         return ExecutionType[v]
 
     def value(self) -> str:

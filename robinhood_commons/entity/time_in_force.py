@@ -12,8 +12,12 @@ class TimeInForce(Enum):
 
     @classmethod
     def mapping(cls) -> Dict[str, TimeInForce]:
-        return {'gtc': TimeInForce.GOOD_TIL_CANCELLED, 'gfd': TimeInForce.GOOD_FOR_THE_DAY,
-                'ioc': TimeInForce.IMMEDIATE_OR_CANCEL, 'opg': TimeInForce.EXECUTE_AT_OPENING}
+        return {
+            "gtc": TimeInForce.GOOD_TIL_CANCELLED,
+            "gfd": TimeInForce.GOOD_FOR_THE_DAY,
+            "ioc": TimeInForce.IMMEDIATE_OR_CANCEL,
+            "opg": TimeInForce.EXECUTE_AT_OPENING,
+        }
 
     @classmethod
     def reverse_mapping(cls) -> Dict[TimeInForce, str]:
@@ -29,9 +33,9 @@ class TimeInForce(Enum):
 
 
 def main() -> None:
-    print(TimeInForce.to_enum('gtc'))
+    print(TimeInForce.to_enum("gtc"))
     print(TimeInForce.from_enum(TimeInForce.EXECUTE_AT_OPENING))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

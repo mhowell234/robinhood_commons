@@ -1,8 +1,12 @@
 from dataclasses import dataclass
 from typing import Dict
 
-EXAMPLE: Dict[str, str] = {'email_address': '12344565@gmail.com', 'google_client_id': 'mh112233',
-                           'google_client_secret': '234578', 'google_refresh_token': '7890'}
+EXAMPLE: Dict[str, str] = {
+    "email_address": "12344565@gmail.com",
+    "google_client_id": "mh112233",
+    "google_client_secret": "234578",
+    "google_refresh_token": "7890",
+}
 
 
 @dataclass(frozen=True)
@@ -18,5 +22,5 @@ def main() -> None:
     print(auth_info)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

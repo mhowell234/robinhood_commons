@@ -27,5 +27,5 @@ def main() -> None:
     print(candle)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

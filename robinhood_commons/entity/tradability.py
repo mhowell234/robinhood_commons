@@ -9,7 +9,7 @@ class Tradability(Enum):
 
     @staticmethod
     def to_enum(value: str) -> Tradability:
-        v: str = value.upper().replace(' ', '-').replace('-', '_')
+        v: str = value.upper().replace(" ", "-").replace("-", "_")
         return Tradability[v]
 
     def value(self) -> str:

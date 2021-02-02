@@ -6,14 +6,14 @@ import pytz
 from dateutil import parser
 from holidays.countries.united_states import US as US_holidays
 
-BASE_TZ = pytz.timezone(zone='US/Eastern')
-UPDATED_AT: str = 'updated_at'
-CREATED_AT: str = 'created_at'
-GRAINS: List[str] = ['days', 'hours', 'minutes', 'seconds']
+BASE_TZ = pytz.timezone(zone="US/Eastern")
+UPDATED_AT: str = "updated_at"
+CREATED_AT: str = "created_at"
+GRAINS: List[str] = ["days", "hours", "minutes", "seconds"]
 
 
 def date_time_format() -> str:
-    return '%Y%m%dT%H%M'
+    return "%Y%m%dT%H%M"
 
 
 def to_est() -> datetime:
@@ -28,12 +28,12 @@ def date_parse(date_str: str) -> datetime:
     return parser.isoparse(date_str) if date_str is not None else None
 
 
-def to_date(date_str: str, format_str: str = '%Y%m%d') -> datetime:
+def to_date(date_str: str, format_str: str = "%Y%m%d") -> datetime:
     return datetime.strptime(date_str, format_str)
 
 
-def date_to_str(a_date: datetime = to_est(), format_str: str = '%Y%m%d') -> str:
-    """ Provides a day representation.
+def date_to_str(a_date: datetime = to_est(), format_str: str = "%Y%m%d") -> str:
+    """Provides a day representation.
 
     Returns:
         A year, month, and day string
@@ -41,7 +41,7 @@ def date_to_str(a_date: datetime = to_est(), format_str: str = '%Y%m%d') -> str:
     return a_date.strftime(format_str)
 
 
-def str_to_iso_8601(a_str: str, format_str: str = '%Y-%m-%d %H:%M:%S.%f') -> datetime:
+def str_to_iso_8601(a_str: str, format_str: str = "%Y-%m-%d %H:%M:%S.%f") -> datetime:
     return datetime.strptime(a_str, format_str)
 
 
@@ -50,7 +50,7 @@ def str_to_datetime(a_str: str = to_est(), format_str: str = date_time_format())
 
 
 def datetime_to_str(a_date: datetime = to_est(), format_str: str = date_time_format()) -> str:
-    """ Provides a minute representation.
+    """Provides a minute representation.
 
     Returns:
         A year, month, day, hour, minute string
@@ -58,8 +58,8 @@ def datetime_to_str(a_date: datetime = to_est(), format_str: str = date_time_for
     return a_date.strftime(format_str)
 
 
-def second_to_str(a_date: datetime = to_est(), format_str: str = '%Y%m%d%H%M%S') -> str:
-    """ Provides a second representation.
+def second_to_str(a_date: datetime = to_est(), format_str: str = "%Y%m%d%H%M%S") -> str:
+    """Provides a second representation.
 
     Returns:
         A year, month, day, hour, minute, second string
@@ -67,7 +67,7 @@ def second_to_str(a_date: datetime = to_est(), format_str: str = '%Y%m%d%H%M%S')
     return a_date.strftime(format_str)
 
 
-def time_to_str(a_date: datetime = to_est(), format_str: str = '%H%M') -> str:
+def time_to_str(a_date: datetime = to_est(), format_str: str = "%H%M") -> str:
     """Provides a time string based representation.
 
     Args:
@@ -80,16 +80,16 @@ def time_to_str(a_date: datetime = to_est(), format_str: str = '%H%M') -> str:
     return a_date.strftime(format_str)
 
 
-def readable_datetime_to_str(a_date: datetime = to_est(), format_str: str = '%Y-%m-%d %H:%M:00') -> str:
-    """ Provides a minute representation.
+def readable_datetime_to_str(a_date: datetime = to_est(), format_str: str = "%Y-%m-%d %H:%M:00") -> str:
+    """Provides a minute representation.
 
     Returns: a formatted string, defaults to year, month, day, hour, minute string
     """
     return a_date.strftime(format_str)
 
 
-def readable_date_to_str(a_date: datetime = to_est(), format_str: str = '%Y-%m-%d') -> str:
-    """ Provides a minute representation.
+def readable_date_to_str(a_date: datetime = to_est(), format_str: str = "%Y-%m-%d") -> str:
+    """Provides a minute representation.
 
     Returns: a year, month, day
     """
@@ -97,7 +97,7 @@ def readable_date_to_str(a_date: datetime = to_est(), format_str: str = '%Y-%m-%
 
 
 def timeoffset_as_str(seconds: int, a_datetime=to_est()) -> str:
-    """ Provides a minute representation.
+    """Provides a minute representation.
 
     Returns: a year, month, day, hour, minute string
     """
@@ -105,9 +105,7 @@ def timeoffset_as_str(seconds: int, a_datetime=to_est()) -> str:
 
 
 def time_floor(a_date: datetime = to_est(), window: int = 10) -> datetime:
-    return a_date - timedelta(minutes=a_date.minute % window,
-                              seconds=a_date.second,
-                              microseconds=a_date.microsecond)
+    return a_date - timedelta(minutes=a_date.minute % window, seconds=a_date.second, microseconds=a_date.microsecond)
 
 
 def convert_dates(input_data: Dict[str, Any], keys: List[str] = []) -> Dict[str, Any]:
@@ -125,7 +123,7 @@ def convert_dates(input_data: Dict[str, Any], keys: List[str] = []) -> Dict[str,
     return input_data
 
 
-def is_holiday(a_time: datetime = to_est(), format_str: str = '%Y-%m-%d') -> bool:
+def is_holiday(a_time: datetime = to_est(), format_str: str = "%Y-%m-%d") -> bool:
     return True if a_time.strftime(format_str) in US_holidays() else False
 
 
@@ -165,14 +163,17 @@ def to_readable_duration(delta: timedelta) -> Optional[str]:
     mins: int = remaining // 60
     secs: int = remaining - mins * 60
 
-    combined = [f'{data[1]} {_maybe_singleize(data[0], data[1])}' for data in zip(GRAINS, [days, hours, mins, secs]) if
-                data[1] > 0]
+    combined = [
+        f"{data[1]} {_maybe_singleize(data[0], data[1])}"
+        for data in zip(GRAINS, [days, hours, mins, secs])
+        if data[1] > 0
+    ]
 
     if len(combined) <= 0:
         return None
 
-    return ', '.join(combined)
+    return ", ".join(combined)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(datetime_to_str())
