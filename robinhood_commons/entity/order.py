@@ -126,7 +126,7 @@ class Order:
 
 def clean_optional_order(input_data: Dict[str, Any]) -> Dict[str, Any]:
     if ERROR_DETAIL_KEY not in input_data:
-        return {"order": clean_order(deepcopy(input_data))}
+        return {"order": Order(**clean_order(deepcopy(input_data)))}
 
     return deepcopy(input_data)
 
