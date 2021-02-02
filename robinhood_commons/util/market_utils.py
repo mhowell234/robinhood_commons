@@ -201,7 +201,7 @@ def time_til_regular_open(a_date: datetime = to_est()) -> timedelta:
             base_date += timedelta(days=1)
 
     open_time = tz_localize(datetime.combine(date=base_date.date(), time=OPEN_TIME))
-    return a_date - open_time
+    return open_time - a_date
 
 
 def time_til_extended_open(a_date: datetime = to_est()) -> timedelta:
@@ -226,7 +226,7 @@ def time_til_extended_open(a_date: datetime = to_est()) -> timedelta:
             base_date += timedelta(days=1)
 
     open_time = tz_localize(datetime.combine(base_date.date(), PRE_MARKET_OPEN_TIME))
-    return a_date - open_time
+    return open_time - a_date
 
 #
 # ONE_MINUTE: timedelta = timedelta(minutes=1)

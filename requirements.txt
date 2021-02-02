@@ -1,10 +1,13 @@
+black==20.8b1
 boto3==1.16.63
 convertdate==2.3.0
+flake8==3.8.4
 holidays==0.10.4
 korean-lunar-calendar==0.2.1
 lunarcalendar==0.0.9
+pylint==2.6.0
 pytest==6.2.2
 pytest-cov==2.11.1
 pytest-html==3.1.1
-pytz==2020.5
+pytz==2021.1
 yagmail==0.14.245

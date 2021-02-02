@@ -4,7 +4,7 @@ from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum, auto
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union, Tuple
 
 from robinhood_commons.entity.execution_type import ExecutionType
 from robinhood_commons.entity.price import Price, clean_price
@@ -105,6 +105,13 @@ class Order:
     executed_notional: Optional[Price] = None
     investment_schedule_id: Optional[str] = None
     details: Optional[str] = None
+
+    def execution_stats(self) -> Tuple[float, float, float]:
+        quantity = sum([e.quantity for e in self.executions])
+        total_price = sum([e.quantity * e.price for e in self.executions])
+        per_share_price = total_price / quantity
+
+        return quantity, total_price, per_share_price
 
 
 def clean_optional_order(input_data: Dict[str, Any]) -> Dict[str, Any]:
