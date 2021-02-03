@@ -96,12 +96,38 @@ def readable_date_to_str(a_date: datetime = to_est(), format_str: str = "%Y-%m-%
     return a_date.strftime(format_str)
 
 
+def time_offset(seconds: int, a_datetime=to_est()) -> datetime:
+    """Provides a minute representation.
+
+    Returns: a datetime
+    """
+    return a_datetime - timedelta(seconds=seconds)
+
+
 def timeoffset_as_str(seconds: int, a_datetime=to_est()) -> str:
     """Provides a minute representation.
 
     Returns: a year, month, day, hour, minute string
     """
-    return time_to_str(a_datetime - timedelta(seconds=seconds))
+    return time_to_str(time_offset(seconds=seconds, a_datetime=a_datetime))
+
+
+def timestamp_strs_for_window(
+    window: int,
+    seconds: int,
+    a_datetime: datetime = to_est(),
+) -> List[str]:
+    """For a start time, num of windows and length per window, produce time strings from start time to
+    start time - (window * seconds).
+
+    Args:
+        window: num intervals
+        seconds: num window seconds
+        a_datetime: time
+
+    Returns: list of times descending from a start time to the past.
+    """
+    return [timeoffset_as_str(seconds=r * seconds, a_datetime=a_datetime) for r in range(window)]
 
 
 def time_floor(a_date: datetime = to_est(), window: int = 10) -> datetime:

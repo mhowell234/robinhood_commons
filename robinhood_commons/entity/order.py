@@ -78,6 +78,15 @@ class OptionalOrder:
 
 
 @dataclass(frozen=True)
+class Execution:
+    id: str
+    price: float
+    quantity: float
+    settlement_date: datetime
+    timestamp: datetime
+
+
+@dataclass(frozen=True)
 class Order:
     id: str
     ref_id: str
@@ -97,7 +106,7 @@ class Order:
     created_at: datetime
     updated_at: datetime
     last_transaction_at: datetime
-    executions: List[Any]
+    executions: List[Execution]
     extended_hours: bool
     override_dtbp_checks: bool
     override_day_trade_checks: bool
@@ -138,6 +147,7 @@ def clean_order(input_data: Dict[str, Any]) -> Dict[str, Any]:
     data["time_in_force"] = TimeInForce.to_enum(data["time_in_force"])
     data["side"] = ExecutionType.to_enum(data["side"])
     data["type"] = OrderType.to_enum(data["type"])
+    data["executions"] = [Execution(**clean_execution(e)) for e in data["executions"]]
 
     consolidate_price_data(data, ["price", "stop_price", "dollar_based_amount", "total_notional", "executed_notional"])
 
@@ -145,6 +155,15 @@ def clean_order(input_data: Dict[str, Any]) -> Dict[str, Any]:
         data, ["cumulative_quantity", "quantity", "average_price", "fees", "stop_price", "last_trail_price"]
     )
     data = convert_dates(data, ["last_transaction_at", "stop_triggered_at", "last_trail_price_updated_at"])
+
+    return data
+
+
+def clean_execution(input_data: Dict[str, Any]) -> Dict[str, Any]:
+    data = deepcopy(input_data)
+
+    data = convert_floats(data, ["price", "quantity"])
+    data = convert_dates(data, ["settlement_date", "timestamp"])
 
     return data
 
